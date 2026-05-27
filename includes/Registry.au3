@@ -78,7 +78,7 @@ Func _Registry_DeleteKeyRecursive($sKeyPath, $bDryRun = False)
     ; Сначала удаляем подключи
     Local $i = 0
     While True
-        Local $sSubKey = _WinAPI_RegEnumKeys($sKeyPath, $i)
+        Local $sSubKey = _WinAPI_RegEnumKey($sKeyPath, $i)
         If @error Then ExitLoop
         
         Local $sFullSubKey = $sKeyPath & "\" & $sSubKey

@@ -3,6 +3,7 @@
 ; ============================================================================
 #include-once
 #include <WinAPIReg.au3>
+#include <WinAPI.au3>
 
 ; ============================================================================
 ; ФУНКЦИИ ОЧИСТКИ
@@ -17,7 +18,7 @@ Func _Cleaner_RemoveUSBDevices(ByRef $aSerials, $bDryRun = False)
         ; Ищем устройство по серийному номеру
         Local $j = 0
         While True
-            Local $sVidPid = RegEnumKey($sBaseKey, $j)
+            Local $sVidPid = _WinAPI_RegEnumKey($sBaseKey, $j)
             If @error Then ExitLoop
             
             ; Проверяем есть ли такой серийный номер
@@ -123,7 +124,7 @@ Func _Cleaner_RemoveUserData(ByRef $aSerials, $bDryRun = False)
     
     Local $i = 0
     While True
-        Local $sValueName = RegEnumValue($sMountKey, $i)
+        Local $sValueName = _WinAPI_RegEnumValue($sMountKey, $i)
         If @error Then ExitLoop
         
         ; Проверяем содержит ли значение серийные номера
