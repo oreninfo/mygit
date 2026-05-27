@@ -1,1 +1,1 @@
-Nothing should be ignored based on the provided file changes. The modified files ('includes/Cleaner.au3', 'includes/Config.au3') are source code files that should not be added to .gitignore.
+Nothing should be ignored since the modified files are all source code files (.au3) and there are no build artifacts, dependencies, or temporary files in the changes.
