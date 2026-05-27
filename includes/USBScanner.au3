@@ -17,13 +17,13 @@ Func _USB_ScanAll()
     ; Получаем список VID/PID
     Local $i = 0
     While True
-        Local $sVidPid = RegEnumKey($sBaseKey, $i)
+        Local $sVidPid = _WinAPI_RegEnumKey($sBaseKey, $i)
         If @error Then ExitLoop
         
         ; Получаем список серийных номеров для этого VID/PID
         Local $j = 0
         While True
-            Local $sSerial = RegEnumKey($sBaseKey & "\" & $sVidPid, $j)
+            Local $sSerial = _WinAPI_RegEnumKey($sBaseKey & "\" & $sVidPid, $j)
             If @error Then ExitLoop
             
             ; Пропускаем системные ключи
