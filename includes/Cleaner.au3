@@ -11,11 +11,12 @@ Func _Cleaner_RemoveUSBDevices(ByRef $aSerials, $bDryRun = False)
     Local $iCount = 0
     Local $sBaseKey = "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USB"
     
-    For Each $sSerial In $aSerials
+    For $i = 0 To UBound($aSerials) - 1
+        Local $sSerial = $aSerials[$i]
         ; Ищем устройство по серийному номеру
-        Local $i = 0
+        Local $j = 0
         While True
-            Local $sVidPid = RegEnumKey($sBaseKey, $i)
+            Local $sVidPid = RegEnumKey($sBaseKey, $j)
             If @error Then ExitLoop
             
             ; Проверяем есть ли такой серийный номер
@@ -31,7 +32,7 @@ Func _Cleaner_RemoveUSBDevices(ByRef $aSerials, $bDryRun = False)
                 ExitLoop
             EndIf
             
-            $i += 1
+            $j += 1
         WEnd
     Next
     
@@ -126,7 +127,8 @@ Func _Cleaner_RemoveUserData(ByRef $aSerials, $bDryRun = False)
         
         ; Проверяем содержит ли значение серийные номера
         Local $vData = RegRead($sMountKey, $sValueName)
-        For Each $sSerial In $aSerials
+        For $j = 0 To UBound($aSerials) - 1
+            Local $sSerial = $aSerials[$j]
             If StringInStr($vData, $sSerial) Then
                 If $bDryRun Then
                     _Logger_Info("[SIM] Будет удалено: " & $sMountKey & "\" & $sValueName)

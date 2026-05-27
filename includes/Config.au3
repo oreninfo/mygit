@@ -3,19 +3,6 @@
 ; ============================================================================
 #include-once
 
-; Проверка и создание констант реестра (если еще не объявлены в главном скрипте)
-If Not IsDeclared("HKEY_LOCAL_MACHINE") Then Global Const $HKEY_LOCAL_MACHINE = 0x80000002
-If Not IsDeclared("HKEY_CURRENT_USER") Then Global Const $HKEY_CURRENT_USER = 0x80000001
-If Not IsDeclared("HKEY_CLASSES_ROOT") Then Global Const $HKEY_CLASSES_ROOT = 0x80000000
-If Not IsDeclared("HKEY_USERS") Then Global Const $HKEY_USERS = 0x80000003
-
-If Not IsDeclared("KEY_QUERY_VALUE") Then Global Const $KEY_QUERY_VALUE = 0x0001
-If Not IsDeclared("KEY_SET_VALUE") Then Global Const $KEY_SET_VALUE = 0x0002
-If Not IsDeclared("KEY_CREATE_SUB_KEY") Then Global Const $KEY_CREATE_SUB_KEY = 0x0004
-If Not IsDeclared("KEY_READ") Then Global Const $KEY_READ = 0x20019
-If Not IsDeclared("KEY_WRITE") Then Global Const $KEY_WRITE = 0x20006
-If Not IsDeclared("KEY_ALL_ACCESS") Then Global Const $KEY_ALL_ACCESS = 0xF003F
-
 ; ============================================================================
 ; ФУНКЦИИ КОНФИГУРАЦИИ
 ; ============================================================================
