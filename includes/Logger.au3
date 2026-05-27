@@ -2,6 +2,7 @@
 ; Logger.au3 - Система логирования
 ; ============================================================================
 #include-once
+#include <Date.au3>
 
 Global $hLogFile_Activity = -1
 Global $hLogFile_Error = -1
